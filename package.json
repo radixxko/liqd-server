@@ -1,0 +1,23 @@
+{
+  "name": "liqd-server",
+  "description": "HTTP(S) / WebSocket Server",
+  "version": "0.0.1",
+  "author": "radixxko",
+  "license": "MIT",
+  "main": "./lib/server.js",
+  "files": [
+    "./lib/"
+  ],
+  "scripts": {
+    "test": "node tests/test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/radixxko/liqd-server.git"
+  },
+  "keywords": [
+    "liqd",
+    "server"
+  ],
+  "dependencies": {}
+}
