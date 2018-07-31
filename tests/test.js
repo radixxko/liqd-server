@@ -12,7 +12,6 @@ server.use( ( req, res, next ) =>
 
 	next();
 })
-
 .get( '/:janko/:hrasko-:marienka', ( req, res, next ) =>
 {
 	console.log( req.query );
