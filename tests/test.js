@@ -14,7 +14,7 @@ server.use( ( req, res, next ) =>
 })
 .get( '/:janko/:hrasko-:marienka', ( req, res, next ) =>
 {
-	console.log( req.query );
+	console.log( '/:janko/:hrasko-:marienka', req.query );
 
 	let html =
 	`<!DOCTYPE html>
@@ -31,6 +31,8 @@ server.use( ( req, res, next ) =>
 })
 .get( '/', ( req, res, next ) =>
 {
+	console.log( '/', req.query );
+
 	let html =
 	`<!DOCTYPE html>
 	<html>
