@@ -12,6 +12,23 @@ server.use( ( req, res, next ) =>
 
 	next();
 })
+.get( '/.*-p:id(\\d+)', ( req, res, next ) =>
+{
+	console.log( '/', req.query );
+
+	let html =
+	`<!DOCTYPE html>
+	<html>
+		<head>
+		</head>
+		<body>
+			Product ${JSON.stringify(req.query)}<br />
+			<input type="button" onclick="location.href='/'" value="Detail" />
+		</body>
+	</html>`
+
+	res.end( html );
+})
 .get( '/:janko/:hrasko-:marienka', ( req, res, next ) =>
 {
 	console.log( '/:janko/:hrasko-:marienka', req.query );
