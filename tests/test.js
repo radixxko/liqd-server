@@ -2,6 +2,8 @@
 
 var inits = [];
 
+const Websocket = require('liqd-websocket');
+
 const Server = require('../lib/server');
 
 const server = new Server();
@@ -62,6 +64,54 @@ server.use( ( req, res, next ) =>
 	</html>`
 
 	res.end( html );
-});
+})
+.ws( '/client', ( client, req, next ) =>
+{
+	console.log('client');
+})
+.ws( '/token', ( client, req, next ) =>
+{
+	console.log('token');
+
+	client.on( 'message', message =>
+	{
+		console.log( 'Server received', message );
+	});
+})
+.ws( '/:type', ( client, req, next ) =>
+{
+	console.log('first', req.query );
+
+	client.on( 'message', message =>
+	{
+		console.log( 'Server received', message );
+	});
+})
+.ws( '/', ( client, req, next ) =>
+{
+	console.log('second');
+
+	client.on( 'message', message =>
+	{
+		console.log( 'Server received', message );
+	});
+});;/**/
 
 server.listen(8080);
+
+let client = new Websocket.Client('ws://localhost:8080/test');
+
+client.on( 'open', () =>
+{
+	client.send( 'Hello' );
+});
+
+client.on( 'close', () =>
+{
+	console.log('Client CLOSED');
+});
+
+client.on( 'error', ( error ) =>
+{
+	console.log('Client ERROR', error);
+});
