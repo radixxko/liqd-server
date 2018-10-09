@@ -8,11 +8,56 @@ const Server = require('../lib/server');
 
 const server = new Server();
 
-server.use( ( req, res, next ) =>
+const session = new Server.Session( 'advertisement', { storage: { directory: __dirname + '/sessions' }});
+
+server.use( 'GET',
+[
+	( req, res, next ) =>
+	{
+		console.log('middleware 1');
+
+		next();
+	},
+	( req, res, next ) =>
+	{
+		console.log('middleware 2');
+
+		next('route');
+	},
+	( req, res, next ) =>
+	{
+		console.log('middleware 3');
+
+		next();
+	}
+]);
+
+server.use( /^.*\.txt$/, ( req, res, next ) =>
 {
-	console.log( 'Request: ' + req.url );
+	console.log('REGEXP match');
 
 	next();
+});
+
+server.session( 'GET', '/:test', 'device', { storage: { directory: __dirname + '/sessions' }});
+server.session( 'device', { storage: { directory: __dirname + '/sessions' }});
+
+server.use( ( req, res, next ) =>
+{
+	session.start( { req, res }, () =>
+	{
+		console.log( 'Request: ' + req.url );
+		console.log( req.headers );
+		console.log({ cookie: req.getHeader('Cookie') });
+
+		res.cookie( 'janko', 'hrachon' );
+
+		req.sessions.device.set( 'key', 'value' );
+
+		console.log( { sessions: req.sessions });
+
+		next();
+	});
 })
 .get( '/.*-p:id(\\d+)', ( req, res, next ) =>
 {
@@ -48,9 +93,11 @@ server.use( ( req, res, next ) =>
 
 	res.end( html );
 })
-.get( '/', ( req, res, next ) =>
+.get( '/', async( req, res, next ) =>
 {
-	console.log( '/', req.query );
+	console.log( 'Hash is ' + await session.get( 'hash' ));
+	session.set( 'hash', 'test' );
+	console.log( '/', req.query, LIQD_FLOW.scope() );
 
 	let html =
 	`<!DOCTYPE html>
