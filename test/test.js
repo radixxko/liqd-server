@@ -97,7 +97,7 @@ server.use( ( req, res, next ) =>
 {
 	console.log( 'Hash is ' + await session.get( 'hash' ));
 	session.set( 'hash', 'test' );
-	console.log( '/', req.query, LIQD_FLOW.scope() );
+	console.log( '/', req.query, );//LIQD_FLOW.scope() );
 
 	let html =
 	`<!DOCTYPE html>
