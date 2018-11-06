@@ -1,7 +1,7 @@
 {
   "name": "liqd-server",
   "description": "HTTP(S) / WebSocket Server",
-  "version": "1.2.10",
+  "version": "1.2.11",
   "author": "radixxko",
   "license": "MIT",
   "main": "lib/server.js",
@@ -16,8 +16,9 @@
     "url": "git://github.com/radixxko/liqd-server.git"
   },
   "keywords": [
+    "server",
     "liqd",
-    "server"
+    "express"
   ],
   "dependencies": {
     "liqd-options": "^1.0.6",
