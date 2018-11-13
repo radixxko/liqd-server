@@ -1,7 +1,7 @@
 {
   "name": "liqd-server",
   "description": "HTTP(S) / WebSocket Server",
-  "version": "1.2.13",
+  "version": "1.2.14",
   "author": "radixxko",
   "license": "MIT",
   "main": "lib/server.js",
