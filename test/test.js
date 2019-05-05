@@ -42,6 +42,15 @@ server.use( /^.*\.txt$/, ( req, res, next ) =>
 server.session( 'GET', '/:test', 'device', { storage: { directory: __dirname + '/sessions' }});
 server.session( 'device', { storage: { directory: __dirname + '/sessions' }});
 
+//http://localhost:8080/item-x3-240cm-p115?quantity=5
+
+server.get( '/:product(.*)-p:id(\\d+)', ( req, res, next ) =>
+{
+	console.log( 'Product Match', req.query );
+
+	next();
+});
+
 server.use( ( req, res, next ) =>
 {
 	session.start( { req, res }, () =>
