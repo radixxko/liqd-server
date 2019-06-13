@@ -142,8 +142,9 @@ server.use( ( req, res, next ) =>
 	{
 		console.log( 'Server received', message );
 	});
-})
-.ws( '/', ( client, req, next ) =>
+});/**/
+//server.get( '/', ( req, res, next ) => { console.log( 'request' ); })
+server.ws( '/', ( client, req, next ) =>
 {
 	console.log('second');
 
