@@ -1,7 +1,7 @@
 {
   "name": "liqd-server",
   "description": "HTTP(S) / WebSocket Server",
-  "version": "1.2.24",
+  "version": "1.2.25",
   "author": "radixxko",
   "license": "MIT",
   "main": "lib/server.js",
@@ -23,7 +23,7 @@
   "dependencies": {
     "liqd-options": "^1.0.8",
     "liqd-querystring": "^1.0.1",
-    "liqd-session": "^1.1.4",
-    "liqd-websocket": "^1.1.1"
+    "liqd-session": "^1.1.5",
+    "liqd-websocket": "^1.1.2"
   }
 }
