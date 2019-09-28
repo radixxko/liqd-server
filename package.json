@@ -23,7 +23,7 @@
   "dependencies": {
     "liqd-options": "^1.0.8",
     "liqd-querystring": "^1.1.0",
-    "liqd-session": "^1.1.5",
-    "liqd-websocket": "^1.2.2"
+    "liqd-session": "^1.1.6",
+    "liqd-websocket": "^1.2.3"
   }
 }
